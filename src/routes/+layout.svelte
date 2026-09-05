@@ -1,6 +1,8 @@
 <script lang="ts">
 	import '../styles/app.css';
 	import Header from '$components/Header.svelte';
+
+	let { children } = $props();
 </script>
 
 <svelte:head>
@@ -11,7 +13,7 @@
 
 <div class="p-8 h-full">
 	<main>
-		<slot />
+		{@render children()}
 	</main>
 </div>
 
@@ -28,7 +30,8 @@
 		font-family: 'Lexend Deca';
 		font-style: normal;
 		font-weight: 400;
-		src: local(''),
+		src:
+			local(''),
 			url('$static/fonts/lexend-deca-v17-latin/lexend-deca-v17-latin-regular.woff2') format('woff2'),
 			url('$static/fonts/lexend-deca-v17-latin/lexend-deca-v17-latin-regular.woff') format('woff');
 	}

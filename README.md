@@ -1,4 +1,5 @@
 # Sveltype
+
 Typing game made using TypeScript on a SvelteKit framework
 
 ## Developing
