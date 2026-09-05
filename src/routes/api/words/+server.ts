@@ -14,7 +14,7 @@ export const GET: RequestHandler = ({ url }) => {
 	}
 	if (mode === 'sentences') {
 		response = sentences.words.slice(0, limit).sort(() => 0.5 - Math.random());
-		response = response.map(sentence => sentence.split(" ")).flat();
+		response = response.map((sentence) => sentence.split(' ')).flat();
 	}
 	if (mode === 'numbers') {
 		response = numbers.words.slice(0, limit).sort(() => 0.5 - Math.random());

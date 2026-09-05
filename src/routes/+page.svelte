@@ -32,10 +32,9 @@
 	let toggleReset = false;
 	let overlayVisible = false;
 
-	onMount(async () => {
-		await getWords(100);
-		focusInput();
+	onMount(() => {
 		window.addEventListener('keydown', focusInput);
+		getWords(100).then(() => focusInput());
 		return () => window.removeEventListener('keydown', focusInput);
 	});
 
@@ -178,7 +177,6 @@
 		const offset = 2;
 		const { offsetLeft, offsetTop } = letterEl;
 
-		console.log('Moving Caret to: ' + offsetLeft + ', ' + offsetTop);
 		caretEl.style.top = `${offsetTop + offset}px`;
 		caretEl.style.left = `${offsetLeft}px`;
 	}
@@ -480,6 +478,7 @@
 		{#if overlayVisible}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				tabindex="0"
 				on:mousedown={(e) => e.preventDefault()}
@@ -500,20 +499,22 @@
 				<div class="time">{stopwatch}</div>
 			</div>
 		{:else}
-			<div class="time" />
+			<!-- prettier-ignore -->
+			<div class="time"></div>
 		{/if}
 
 		{#key toggleReset}
 			<div in:blur|local bind:this={wordsEl} class="words">
-				{#each words as word}
+				{#each words as word, wIdx (word + wIdx)}
 					<span class="word">
-						{#each word as letter}
+						{#each word as letter, lIdx (letter + lIdx)}
 							<span class="letter">{letter}</span>
 						{/each}
 					</span>
 				{/each}
 
-				<div bind:this={caretEl} class="caret" />
+				<!-- prettier-ignore -->
+				<div bind:this={caretEl} class="caret"></div>
 			</div>
 			<div class="mt-2 mr-2" tabindex="-1">
 				{#if gameMode === 'zen'}Press 'Enter' to end the game{/if}
@@ -595,9 +596,9 @@
 		position: absolute;
 		top: 41vh;
 		left: 50%;
-        transform: translateX(-50%);
+		transform: translateX(-50%);
 		width: calc(100% - 2 * clamp(32px, 8vw, 200px)); // Adjust 100px as needed
-        padding: 0 clamp(4px, 2vw, 12px); // If you need padding instead of margin
+		padding: 0 clamp(4px, 2vw, 12px); // If you need padding instead of margin
 
 		.input {
 			position: absolute;
