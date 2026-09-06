@@ -134,7 +134,7 @@
 			correctLetters++;
 		} else {
 			letterEl.dataset.letter = 'incorrect';
-			letterEl.className = 'letter opacity-100 text-[hsl(var(--er))]';
+			letterEl.className = 'letter opacity-100 text-[var(--color-error)]';
 		}
 	}
 
@@ -609,7 +609,7 @@
 			position: relative;
 			height: 2rem;
 			font-size: 1.5rem;
-			color: hsl(var(--er));
+			color: var(--color-error);
 			opacity: 0;
 			transition: all 0.3s ease;
 		}
@@ -643,7 +643,7 @@
 			position: absolute;
 			height: 1.8rem;
 			top: -4px;
-			border-right: 2px solid hsl(var(--er));
+			border-right: 2px solid var(--color-error);
 			animation: caret 1s infinite;
 			transition: all 0.3s ease;
 
@@ -665,7 +665,7 @@
 
 		.score {
 			font-size: 4rem;
-			color: hsl(var(--er));
+			color: var(--color-error);
 		}
 
 		.play {
