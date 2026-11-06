@@ -14,8 +14,8 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@sveltejs/adapter-auto": "^7.0.1",
-		"@sveltejs/kit": "^2.70.4",
+		"@sveltejs/adapter-auto": "^8.0.0",
+		"@sveltejs/kit": "^3.1.1",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@tailwindcss/vite": "^4.3.4",
 		"@types/node": "^26.6.6",
@@ -41,7 +41,7 @@
 	},
 	"overrides": {
 		"brace-expansion": "^5.0.12",
-		"cookie": "^0.7.2",
+		"cookie": "^2.0.2",
 		"devalue": "^5.9.4",
 		"minimatch": "^11.0.5"
 	}
